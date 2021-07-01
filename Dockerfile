@@ -11,7 +11,6 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 USER www-data
-COPY app /app
-
-WORKDIR /app
+COPY app /srv/app
+WORKDIR /srv/app
 CMD ["gunicorn", "main:app", "-b", "0.0.0.0:8080", "-t", "90", "--log-level", "DEBUG", "--access-logfile", "/dev/stdout", "--error-logfile", "/dev/stderr"]
