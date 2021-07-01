@@ -32,6 +32,6 @@ class AuthApp(flask.Flask):
             # Invalid token
             print("invalid token")
         userid = idinfo['sub']
-        print(idinfo)
-        print("userid=%s", userid)
-        return flask.Response('OK', status=200)
+        print("idinfo=%s" % idinfo)
+        print("userid=%s" % userid)
+        return flask.Response(idinfo['name'], status=200)
