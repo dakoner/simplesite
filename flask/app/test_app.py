@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from app import create_app
+from AuthApp.main import create_app
 
 @pytest.fixture
 def client():

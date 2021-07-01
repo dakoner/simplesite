@@ -7,9 +7,9 @@ CLIENT_ID='243774406021-jeqdr97jl8kl4dvhhpqtqrbt9kjfqqs9.apps.googleusercontent.
 logging.basicConfig(level=logging.DEBUG)
 
 
-class App(flask.Flask):
+class AuthApp(flask.Flask):
     def __init__(self, **kwargs):
-        super(App, self).__init__(__name__, **kwargs)
+        super(AuthApp, self).__init__(__name__, **kwargs)
         self.add_url_rule("/", view_func=self.index)
         self.add_url_rule("/auth", view_func=self.auth, methods=['POST'])
         
