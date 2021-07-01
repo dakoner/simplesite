@@ -1,3 +1,5 @@
+import sys
+print(sys.path)
 from bs4 import BeautifulSoup
 import os
 
