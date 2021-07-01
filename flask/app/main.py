@@ -12,6 +12,7 @@ class App(flask.Flask):
     def __init__(self, **kwargs):
         super(App, self).__init__(__name__, **kwargs)
         self.add_url_rule("/", view_func=self.index)
+        self.add_url_rule("/auth", view_func=self.auth, methods=['POST'])
         
     def index(self):
         return flask.redirect("http://gork.konerding.com/static/index.html")
