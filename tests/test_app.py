@@ -1,27 +1,26 @@
-import sys
-print(sys.path)
 from bs4 import BeautifulSoup
-import os
-
 import pytest
-
 from main import create_app
+
 
 @pytest.fixture
 def client():
-    app = create_app() #{'TESTING': True, 'DATABASE': db_path})
+    app = create_app()
 
     with app.test_client() as client:
         yield client
+
 
 def test_root(client):
     rv = client.get('/')
     assert rv.status_code == 302
     assert rv.headers['Location'].endswith("/static/index.html")
 
+
 def test_missing(client):
     rv = client.get('/thispagedoesnotexist')
     assert rv.status_code == 404
+
 
 def test_index(client):
     rv = client.get('/static/index.html')
@@ -29,4 +28,3 @@ def test_index(client):
     bs = BeautifulSoup(rv.data, "html.parser")
     assert bs.head is not None
     assert bs.body is not None
-    
