@@ -5,3 +5,4 @@ futures
 httplib2
 flask-cors
 werkzeug
+bs4
