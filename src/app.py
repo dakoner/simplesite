@@ -14,7 +14,7 @@ class AuthApp(flask.Flask):
         self.add_url_rule("/auth", view_func=self.auth, methods=['POST'])
 
     def index(self):
-        return flask.redirect(flask.url_for('static', filename='index.html'))
+        return flask.render_template('index.html', client_id=CLIENT_ID)
 
     def auth(self):
         token = flask.request.form['idtoken']
