@@ -1,5 +1,4 @@
 import flask
-import flask_cors
 import logging
 from oauth2client import client, crypt
 
@@ -39,7 +38,6 @@ class AuthApp(flask.Flask):
 
 def create_app():
     app = AuthApp()
-    flask_cors.CORS(app, resources={r"/*": {"origins": "http://gork.konerding.com"}})
     return app
 
 
