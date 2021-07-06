@@ -10,7 +10,7 @@ RUN apt-get update && \
     pip3 install -r /tmp/requirements.txt && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY --chown=www-data src /srv
+COPY --chown=www-data src/app /srv
 USER www-data
 WORKDIR /srv
 CMD ["gunicorn", "app:app", "-b", "0.0.0.0:8080", "-t", "90", "--log-level", "DEBUG", "--access-logfile", "/dev/stdout", "--error-logfile", "/dev/stderr"]
