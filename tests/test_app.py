@@ -11,11 +11,11 @@ def client():
 
 def test_index(client):
     rv = client.get('/')
-    assert rv.status_code == 200
+    assert rv.status_code == 302
+    assert rv.headers['Location'] == "http://localhost/static/index.html"
     bs = BeautifulSoup(rv.data, "html.parser")
-    assert bs.head is not None
-    assert bs.body is not None
-
+    assert bs.title.string == 'Redirecting...'
+    assert bs.head is None
 
 def test_missing(client):
     rv = client.get('/thispagedoesnotexist')
